@@ -3,11 +3,11 @@ import promiseMiddleware from "redux-promise-middleware";
 
 import formGetReducer from "./ducks/formGetReducer";
 
-const combineReducers = combineReducers({
-  form: formGetReducer
+const combinedReducers = combineReducers({
+  forms: formGetReducer
 });
 
 const middlewares = applyMiddleware(promiseMiddleware());
-const store = createStore(combineReducers, middlewares);
+const store = createStore(combinedReducers, middlewares);
 
 export default store;
