@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { getForms } from "../../ducks/formGetReducer";
+import FormCard from "../Cards/FormCard";
 
 class User_Dashboard extends Component {
   componentDidMount() {
@@ -18,8 +19,7 @@ class User_Dashboard extends Component {
         {forms[0] &&
           forms.map((form, i) => (
             <div className="user_dashboard" key={i}>
-              {form.issuecategory}
-              {form.issueresolution}
+              <FormCard form={form} />
             </div>
           ))}
       </div>
