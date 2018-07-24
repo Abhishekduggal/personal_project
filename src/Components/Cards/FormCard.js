@@ -1,6 +1,16 @@
 import React from "react";
 // import Button from "../Buttons/FormButton";
 
+const formCardStyles = {
+  height: "500px",
+  //width: "600px",
+  border: "1px solid black",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column"
+};
+
 const FormCard = props => {
   // console.log(props);
   let {
@@ -28,7 +38,7 @@ const FormCard = props => {
   } = props.form;
 
   return (
-    <div className="form_display">
+    <div className="form_display" style={formCardStyles}>
       <h2>{issuecategory}</h2>
       <h3>{issueresolution}</h3>
       <h4>{rejects}</h4>

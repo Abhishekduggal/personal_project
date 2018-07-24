@@ -6,9 +6,7 @@ import Login from "./Components/Login/Login";
 import MainDashboard from "./Components/Dashboards/Main_Dashboard";
 import ManagerDashboard from "./Components/Dashboards/Manager_Dashboard";
 import UserDashboard from "./Components/Dashboards/User_Dashboard";
-import Form_1 from "./Components/Form/Form_1";
-import Form_2 from "./Components/Form/Form_2";
-import Form_3 from "./Components/Form/Form_3";
+import Form from "./Components/Form/Form";
 import Route_Not_Found from "./Route_Not_Found";
 
 export default (
@@ -18,9 +16,7 @@ export default (
     <Route exact path="/dashboard" component={MainDashboard} />
     <Route path="/dashboard/manager" component={ManagerDashboard} />
     <Route path="/dashboard/user" component={UserDashboard} />
-    <Route path="/form/1" component={Form_1} />
-    <Route path="/form/2" component={Form_2} />
-    <Route path="/form/3" component={Form_3} />
+    <Route path="/form" component={Form} />
     <Route path="*" component={Route_Not_Found} />
   </Switch>
 );

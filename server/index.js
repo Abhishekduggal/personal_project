@@ -7,7 +7,7 @@ const passport = require("passport");
 
 const port = process.env.SERVER_PORT || 3004;
 
-const { read } = require("./controllers/formCtrl");
+const { read, create } = require("./controllers/formCtrl");
 
 const app = express();
 
@@ -21,6 +21,8 @@ massive(process.env.CONNECTION_STRING)
 app.use(json());
 
 app.get("/api/forms", read);
+
+app.post("/api/forms/create", create);
 
 app.listen(port, () => {
   console.log(`I am up and listening on port: ${port}`);
