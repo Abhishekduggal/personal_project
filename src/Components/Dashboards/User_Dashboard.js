@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getForms } from "../../ducks/formGetReducer";
+import { getForms, deleteForm } from "../../ducks/formReducer";
 import FormCard from "../Cards/FormCard";
 
 class User_Dashboard extends Component {
@@ -19,7 +19,7 @@ class User_Dashboard extends Component {
         {forms[0] &&
           forms.map((form, i) => (
             <div className="user_dashboard" key={i}>
-              <FormCard form={form} />
+              <FormCard form={form} deleteForm={this.props.deleteForm} />
             </div>
           ))}
       </div>
@@ -31,5 +31,5 @@ const mapStateToProps = state => state;
 
 export default connect(
   mapStateToProps,
-  { getForms }
+  { getForms, deleteForm }
 )(User_Dashboard);

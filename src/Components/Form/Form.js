@@ -287,8 +287,8 @@ class Form extends Component {
             placeholder="Comments"
             onChange={e => this.props.updateCommentsInput(e.target.value)}
           />
-          <br />
         </label>
+        <br />
         <label>
           Issue Category
           <input

@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import promiseMiddleware from "redux-promise-middleware";
 
-import formGetReducer from "./ducks/formGetReducer";
+import formReducer from "./ducks/formReducer";
 import formInputReducer from "./ducks/formInputReducer";
 
 const combinedReducers = combineReducers({
-  forms: formGetReducer,
+  forms: formReducer,
   formInput: formInputReducer
 });
 

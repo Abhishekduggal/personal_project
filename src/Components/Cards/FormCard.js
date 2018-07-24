@@ -3,8 +3,7 @@ import React from "react";
 
 const formCardStyles = {
   height: "500px",
-  //width: "600px",
-  border: "1px solid black",
+  border: "2px solid black",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -14,6 +13,7 @@ const formCardStyles = {
 const FormCard = props => {
   // console.log(props);
   let {
+    formid,
     machinetype,
     shift,
     shopordernumber,
@@ -62,6 +62,14 @@ const FormCard = props => {
         {training}
         {trainingcategory}
         {imgurl}
+      </div>
+      <div>
+        <button
+          className="delete_button"
+          onClick={() => props.deleteForm(formid)}
+        >
+          Delete Form
+        </button>
       </div>
     </div>
   );

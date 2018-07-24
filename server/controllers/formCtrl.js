@@ -69,7 +69,22 @@ const create = (req, res, next) => {
     });
 };
 
+const deleteForm = (req, res, next) => {
+  let { formid } = req.params;
+
+  const db = req.app.get("db");
+  console.log(formid);
+
+  db.forms
+    .delete_form(formid)
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(err => res.status(500).send(err));
+};
+
 module.exports = {
   read,
-  create
+  create,
+  deleteForm
 };
