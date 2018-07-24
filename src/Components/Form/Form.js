@@ -34,30 +34,59 @@ class Form extends Component {
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
-  handleSubmitForm(
-    machinetype,
-    shift,
-    shopordernumber,
-    productid,
-    workstation,
-    temp,
-    productspeed,
-    hrid,
-    productdensity,
-    rejects,
-    waterpressure,
-    drylevel,
-    issuelog,
-    machineoperating,
-    comments,
-    issuecategory,
-    issueresolution,
-    packagingissue,
-    training,
-    trainingcategory,
-    imgurl
-  ) {
-    //Make an axios call to the database
+  handleSubmitForm() {
+    let {
+      machinetype,
+      shift,
+      shopordernumber,
+      productid,
+      workstation,
+      temp,
+      productspeed,
+      hrid,
+      productdensity,
+      rejects,
+      waterpressure,
+      drylevel,
+      issuelog,
+      machineoperating,
+      comments,
+      issuecategory,
+      issueresolution,
+      packagingissue,
+      training,
+      trainingcategory,
+      imgurl
+    } = this.props.formInput;
+    console.log(shift);
+
+    axios
+      .post("/api/forms/create", {
+        machinetype,
+        shift,
+        shopordernumber,
+        productid,
+        workstation,
+        temp,
+        productspeed,
+        hrid,
+        productdensity,
+        rejects,
+        waterpressure,
+        drylevel,
+        issuelog,
+        machineoperating,
+        comments,
+        issuecategory,
+        issueresolution,
+        packagingissue,
+        training,
+        trainingcategory,
+        imgurl
+      })
+      .then(res => {
+        this.props.reset();
+      });
     console.log(this.props.formInput);
   }
   render() {
@@ -113,6 +142,7 @@ class Form extends Component {
             onChange={e => this.props.updateShiftInput(e.target.value)}
             placeholder="Select the Shift"
           >
+            <option value="Select">Select</option>
             <option value="Shift1">Shift-1</option>
             <option value="Shift2">Shift-2</option>
             <option value="Shift3">Shift-3</option>
@@ -214,7 +244,7 @@ class Form extends Component {
         </label>
         <br />
         <label>
-          Enter the Dry Level Amount
+          Dry Level Amount
           <input
             className="Input"
             value={drylevel || ""}
@@ -243,13 +273,14 @@ class Form extends Component {
             }
             placeholder="Machine Operating"
           >
+            <option value="Select">Select</option>
             <option value={true}>True</option>
             <option value={false}>False</option>
           </select>
         </label>
         <br />
         <label>
-          Additional Comments
+          Comments
           <input
             className="Input"
             value={comments || ""}
@@ -269,7 +300,7 @@ class Form extends Component {
         </label>
         <br />
         <label>
-          Any Resolution
+          Resolution
           <input
             className="Input"
             value={issueresolution || ""}
@@ -288,6 +319,7 @@ class Form extends Component {
             onChange={e => this.props.updatePackagingIssueInput(e.target.value)}
             placeholder="Machine Operating"
           >
+            <option value="Select">Select</option>
             <option value={true}>True</option>
             <option value={false}>False</option>
           </select>
@@ -301,6 +333,7 @@ class Form extends Component {
             onChange={e => this.props.updateTrainingInput(e.target.value)}
             placeholder="Training"
           >
+            <option value="Select">Select</option>
             <option value={true}>True</option>
             <option value={false}>False</option>
           </select>

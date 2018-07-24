@@ -34,6 +34,7 @@ const create = (req, res, next) => {
   } = req.body;
 
   const db = req.app.get("db");
+  console.log(req.body);
   db.forms
     .create_form([
       machinetype,
@@ -49,19 +50,23 @@ const create = (req, res, next) => {
       parseInt(waterpressure),
       parseFloat(drylevel).toFixed(2),
       issuelog,
-      machineoperating,
+      Boolean(machineoperating),
       comments,
       issuecategory,
       issueresolution,
-      packagingissue,
-      training,
+      Boolean(packagingissue),
+      Boolean(training),
       trainingcategory,
       imgurl
     ])
     .then(response => {
+      // console.log("Createform response=>>", response);
       res.status(200).send(response);
     })
-    .catch(err => res.status(500).send(err));
+    .catch(err => {
+      // console.log("log error abhi:", err);
+      res.status(500).send(err);
+    });
 };
 
 module.exports = {
