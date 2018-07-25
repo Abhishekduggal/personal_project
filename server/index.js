@@ -7,7 +7,7 @@ const passport = require("passport");
 
 const port = process.env.SERVER_PORT || 3004;
 
-const { read, create, deleteForm } = require("./controllers/formCtrl");
+const { read, create, update, deleteForm } = require("./controllers/formCtrl");
 
 const app = express();
 
@@ -23,6 +23,8 @@ app.use(json());
 app.get("/api/forms", read);
 
 app.post("/api/forms/create", create);
+
+app.put("/api/form/:formid", update);
 
 app.delete("/api/form/:formid", deleteForm);
 
