@@ -24,7 +24,7 @@ const FormCard = props => {
         <div key={i}>
           {!props.parentState[val[0]] ? (
             <p name={val[0]} onClick={e => props.handleClickCheck(e)}>
-              prop: {val[0]} value: {val[1]}
+              {val[0]} value: {val[1]}
             </p>
           ) : (
             <input

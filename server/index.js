@@ -50,13 +50,12 @@ passport.use(strategy);
 
 passport.serializeUser((user, done) => {
   const db = app.get("db");
-  console.log(user);
+  // console.log(user);
   db.users
     .get_user_authid(user.id)
     .then(response => {
-      console.log(response);
+      // console.log(response);
       if (!response[0]) {
-        console.log("fdsdfsfsdfs");
         db.users
           .add_user_authid([user.displayName, user.id])
           .then(res => console.log(res), done(null, res[0]))

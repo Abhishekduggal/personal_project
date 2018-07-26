@@ -7,10 +7,8 @@ const logout = (req, res) => {
 };
 
 const getUser = (req, res) => {
-  console.log("hit getUser");
-
   if (!req.user) {
-    res.status(500).send({ message: "Please log on to Continue" });
+    res.status(500).send({ message: "Please Sign in to Continue" });
   } else {
     res.status(200).send(req.user);
   }
