@@ -61,7 +61,7 @@ class Form extends Component {
     console.log(shift);
 
     axios
-      .post("/api/forms/create", {
+      .post("/api/form/create", {
         machinetype,
         shift,
         shopordernumber,
@@ -87,7 +87,7 @@ class Form extends Component {
       .then(res => {
         this.props.reset();
       });
-    console.log(this.props.formInput);
+    // console.log(this.props.formInput);
   }
   render() {
     // console.log(this.props.formInput);

@@ -7,13 +7,16 @@ CREATE TABLE users_pp
 
 );
 
+ALTER TABLE users_pp
+ADD authid VARCHAR (80);
+
 INSERT INTO users_pp
     (name, role, isAdmin)
 VALUES
     ('Abhi', 'Manager', TRUE ),
     ('Mary', 'QA', FALSE),
-    ('John', 'Manager', TRUE),
-    ('Harry', 'Production', TRUE);
+    ('John', 'Manager', FALSE),
+    ('Harry', 'Production', FALSE);
 
 
 CREATE TABLE hr_users_pp
@@ -82,3 +85,6 @@ INSERT INTO forms_pp
 VALUES
     ('Mixer', 'Shift1', 1845, 0, 'Clean', 125, 5545, 1, 44, 1000, 453454, 22.45, 'All product is bad due to extra water', FALSE, 'Cleaning Required', 'Training Issue', 'Ask for help', TRUE, TRUE, 'Basics', 'https://c.pxhere.com/images/5d/5b/cd42e54653a25fd8af2f3f2d314f-1420583.jpg!d' ),
     ('Mixer', 'Shift2', 1846, 1, 'Dirty', 125, 5545, 1, 44, 100, 453454, 21.45, 'All product is not roasted', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for Maintenance', FALSE, FALSE, 'None', 'https://c.pxhere.com/images/5d/5b/cd42e54653a25fd8af2f3f2d314f-1420583.jpg!d' )
+
+ALTER TABLE forms_pp
+ADD userid INT;

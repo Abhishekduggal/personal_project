@@ -2,6 +2,14 @@ import axios from "axios";
 
 const GET_FORMS = "GET_FORMS";
 const DELETE_FORM = "DELETE_FORM";
+const UPDATE_FORM_VALUE = "UPDATE_FORM_VALUE";
+
+export function updateFormValue(updatedInfo, id) {
+  return {
+    type: UPDATE_FORM_VALUE,
+    payload: axios.patch(`/api/form/field/${id}`, updatedInfo)
+  };
+}
 
 export function getForms() {
   return {
@@ -34,6 +42,7 @@ export default function formsReducer(state = initialState, action) {
 
     case `${GET_FORMS}_FULFILLED`:
     case `${DELETE_FORM}_FULFILLED`:
+    case `${UPDATE_FORM_VALUE}_FULFILLED`:
       return {
         ...state,
         isLoading: false,

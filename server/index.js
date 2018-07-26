@@ -1,15 +1,27 @@
 require("dotenv").config();
 const express = require("express");
 const { json } = require("body-parser");
+const cors = require("cors");
 const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
+const path = require("path");
+
+const strategy = require("./strategy");
+const { logout, login, getUser } = require("./controllers/userCtrl");
 
 const port = process.env.SERVER_PORT || 3004;
-
-const { read, create, update, deleteForm } = require("./controllers/formCtrl");
+const {
+  read,
+  create,
+  update,
+  deleteForm,
+  updateField
+} = require("./controllers/formCtrl");
 
 const app = express();
+
+app.use(express.static(__dirname + "/../build"));
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
@@ -19,14 +31,63 @@ massive(process.env.CONNECTION_STRING)
   .catch(err => console.log(err));
 
 app.use(json());
+app.use(cors());
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 100000
+    }
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(strategy);
+
+passport.serializeUser((user, done) => {
+  const db = app.get("db");
+  console.log(user);
+  db.users
+    .get_user_authid(user.id)
+    .then(response => {
+      console.log(response);
+      if (!response[0]) {
+        console.log("fdsdfsfsdfs");
+        db.users
+          .add_user_authid([user.displayName, user.id])
+          .then(res => console.log(res), done(null, res[0]))
+          .catch(err => done(err, null));
+      } else {
+        return done(null, response[0]);
+      }
+    })
+    .catch(err => done(err, null));
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+app.get("/login", login);
+
+app.get("/logout", logout);
+
+// Get User will give access to the user Object
+app.get("/api/get-user", getUser);
 
 app.get("/api/forms", read);
 
-app.post("/api/forms/create", create);
+app.post("/api/form/create", create);
 
 app.put("/api/form/:formid", update);
 
 app.delete("/api/form/:formid", deleteForm);
+
+app.patch("/api/form/field/:id", updateField);
 
 app.listen(port, () => {
   console.log(`I am up and listening on port: ${port}`);

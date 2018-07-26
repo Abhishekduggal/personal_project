@@ -143,9 +143,23 @@ const deleteForm = (req, res, next) => {
     .catch(err => res.status(500).send(err));
 };
 
+const updateField = (req, res) => {
+  const db = req.app.get("db");
+  const data = Object.entries(req.body);
+  db.query(
+    "UPDATE forms_pp SET " +
+      data[0][0] +
+      " = $1 WHERE formid = $2; SELECT * FROM forms_pp;",
+    [data[0][1], +req.params.id]
+  ).then(response => {
+    res.status(200).send(response);
+  });
+};
+
 module.exports = {
   read,
   create,
   update,
-  deleteForm
+  deleteForm,
+  updateField
 };
