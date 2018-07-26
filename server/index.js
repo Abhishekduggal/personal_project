@@ -18,6 +18,7 @@ const {
   deleteForm,
   updateField
 } = require("./controllers/formCtrl");
+const { emailForm } = require("./controllers/emailCtrl");
 
 const app = express();
 
@@ -87,6 +88,9 @@ app.put("/api/form/:formid", update);
 app.delete("/api/form/:formid", deleteForm);
 
 app.patch("/api/form/field/:id", updateField);
+
+//Email functionality end Point
+app.post("/api/email", emailForm);
 
 app.listen(port, () => {
   console.log(`I am up and listening on port: ${port}`);

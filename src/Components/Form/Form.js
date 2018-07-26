@@ -58,7 +58,7 @@ class Form extends Component {
       trainingcategory,
       imgurl
     } = this.props.formInput;
-    console.log(shift);
+    // console.log(shift);
 
     axios
       .post("/api/form/create", {
@@ -86,6 +86,11 @@ class Form extends Component {
       })
       .then(res => {
         this.props.reset();
+        axios.post("/api/email", {
+          issuecategory,
+          trainingcategory,
+          sendemail: "abhiduggal8@gmail.com"
+        });
       });
     // console.log(this.props.formInput);
   }
