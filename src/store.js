@@ -3,10 +3,12 @@ import promiseMiddleware from "redux-promise-middleware";
 
 import formReducer from "./ducks/formReducer";
 import formInputReducer from "./ducks/formInputReducer";
+import userReducer from "./ducks/userReducer";
 
 const combinedReducers = combineReducers({
   forms: formReducer,
-  formInput: formInputReducer
+  formInput: formInputReducer,
+  user: userReducer
 });
 
 const middlewares = applyMiddleware(promiseMiddleware());

@@ -89,7 +89,7 @@ class Form extends Component {
         axios.post("/api/email", {
           issuecategory,
           trainingcategory,
-          sendemail: "abhiduggal8@gmail.com"
+          sendemail: process.env.SEND_EMAIL
         });
       });
     // console.log(this.props.formInput);

@@ -7,10 +7,16 @@ const logout = (req, res) => {
 };
 
 const getUser = (req, res) => {
+  const db = req.app.get("db");
+
+  // console.log("ctrl line 12", req.user);
+
   if (!req.user) {
     res.status(500).send({ message: "Please Sign in to Continue" });
   } else {
-    res.status(200).send(req.user);
+    db.users.get_user_authid(req.user.authid).then(user => {
+      res.status(200).send(user[0]);
+    });
   }
 };
 
