@@ -8,6 +8,7 @@ import ManagerDashboard from "./Components/Dashboards/Manager_Dashboard";
 import UserDashboard from "./Components/Dashboards/User_Dashboard";
 import Form from "./Components/Form/Form";
 import Route_Not_Found from "./Route_Not_Found";
+import FormSms from "./Components/Form/FormSms";
 
 export default (
   <Switch>
@@ -17,6 +18,7 @@ export default (
     <Route path="/dashboard/manager" component={ManagerDashboard} />
     <Route path="/dashboard/user" component={UserDashboard} />
     <Route path="/form" component={Form} />
+    <Route path="/sms" component={FormSms} />
     <Route path="*" component={Route_Not_Found} />
   </Switch>
 );

@@ -19,6 +19,7 @@ const {
   updateField
 } = require("./controllers/formCtrl");
 const { emailForm } = require("./controllers/emailCtrl");
+const { smsMessage } = require("./controllers/smsCtrl");
 
 const app = express();
 
@@ -89,8 +90,10 @@ app.delete("/api/form/:formid", deleteForm);
 
 app.patch("/api/form/field/:id", updateField);
 
-//Email functionality end Point
+//Email & SMS functionality end Point
 app.post("/api/email", emailForm);
+
+app.post("/api/sms", smsMessage);
 
 app.listen(port, () => {
   console.log(`I am up and listening on port: ${port}`);
