@@ -15,7 +15,11 @@ INSERT INTO users_pp
 VALUES
     ('Abhi', 'Manager', TRUE ),
     ('Mary', 'QA', FALSE),
+    ('Larry', 'Manager', TRUE ),
+    ('Sheila', 'QA', FALSE),
     ('John', 'Manager', FALSE),
+    ('Laurie', 'Production', FALSE),
+    ('Ana', 'Production', FALSE),
     ('Harry', 'Production', FALSE);
 
 
@@ -36,7 +40,11 @@ INSERT INTO hr_users_pp
 VALUES
     (3, 'John', 'abhiduggal8@gmail.com', 'Production', 'Abhi', 1004, 'UTAH FACTORY'),
     (2, 'Mary', 'abhiduggal8@gmail.com', 'QA', 'John', 1004, 'UTAH FACTORY'),
-    (4, 'Harry', 'abhiduggal8@gmail.com', 'Production', 'John', 1006, 'CHICAGO FACTORY')
+    (4, 'Harry', 'abhiduggal8@gmail.com', 'Production', 'John', 1006, 'CHICAGO FACTORY'),
+    (9, 'Larry', 'abhiduggal8@gmail.com', 'Production', 'John', 1006, 'CHICAGO FACTORY'),
+    (10, 'Shiela', 'abhiduggal8@gmail.com', 'QA', 'John', 1006, 'CHICAGO FACTORY'),
+    (12, 'Laurie', 'abhiduggal8@gmail.com', 'Production', 'John', 1004, 'UTAH FACTORY'),
+    (13, 'Ana', 'abhiduggal8@gmail.com', 'Production', 'John', 1006, 'CHICAGO FACTORY');
 
 CREATE TABLE products_pp
 (
@@ -51,7 +59,9 @@ VALUES
     ('Cereal', 55.45),
     ('Granola', 85.55),
     ('Oatmel', 25.88),
-    ('ChocoBar', 185.65)
+    ('ChocoBar', 185.65),
+    ('CoconutBar', 285.65),
+    ('ChocoCoconut', 285.65);
 
 CREATE TABLE forms_pp
 (
@@ -81,10 +91,18 @@ CREATE TABLE forms_pp
 )
 
 INSERT INTO forms_pp
-    (machinetype, shift, shopordernumber, productid, workstation, temp, productspeed, hrid, productdensity, rejects, waterpressure, drylevel, issuelog, machineoperating, comments, issuecategory, issueresolution, packagingissue, training, trainingcategory,imgurl)
+    (machinetype, shift, shopordernumber, productid, workstation, temp, productspeed, hrid, productdensity, rejects, waterpressure, drylevel, issuelog, machineoperating, comments, issuecategory, issueresolution, packagingissue, training, trainingcategory, imgurl, userid)
 VALUES
-    ('Mixer', 'Shift1', 1845, 0, 'Clean', 125, 5545, 1, 44, 1000, 453454, 22.45, 'All product is bad due to extra water', FALSE, 'Cleaning Required', 'Training Issue', 'Ask for help', TRUE, TRUE, 'Basics', 'https://c.pxhere.com/images/5d/5b/cd42e54653a25fd8af2f3f2d314f-1420583.jpg!d' ),
-    ('Mixer', 'Shift2', 1846, 1, 'Dirty', 125, 5545, 1, 44, 100, 453454, 21.45, 'All product is not roasted', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for Maintenance', FALSE, FALSE, 'None', 'https://c.pxhere.com/images/5d/5b/cd42e54653a25fd8af2f3f2d314f-1420583.jpg!d' )
+    ('Mixer', 'Shift1', 1845, 0, 'Clean', 125, 5545, 1, 44, 1000, 453454, 22.45, 'All product is bad due to extra water', FALSE, 'Cleaning Required', 'Training Issue', 'Ask for help', TRUE, TRUE, 'Basics', 'https://upload.wikimedia.org/wikipedia/commons/1/18/SSF_Costco_bakery_pastry_packaging_line.JPG', 8 ),
+    ('Mixer', 'Shift2', 1846, 1, 'Dirty', 125, 23545, 1, 44, 100, 453454, 21.45, 'All product is not roasted', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for Maintenance', FALSE, FALSE, 'None', 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Laboratoires_Arkopharma_-_Chaine_de_conditionnement_mise_en_etui_piluliers.JPG', 8 ),
+    ('Dryer', 'Shift1', 1848, 0, 'Clean', 125, 5355, 1, 44, 1000, 453454, 22.45, 'All product is bad ', FALSE, 'Cleaning Required', 'Training Issue', 'Ask for help', TRUE, TRUE, 'Basics', 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Laboratoires_Arkopharma_-_Chaine_de_conditionnement_remplissage_piluliers.JPG', 12 ),
+    ('Dryer', 'Shift2', 1849, 2, 'Dirty', 125, 6745, 1, 44, 100, 453454, 21.45, 'All product is over roasted', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for Maintenance', FALSE, TRUE, 'None', 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Budweiser_Plant.jpg', 13 ),
+    ('Packaging', 'Shift2', 1850, 2, 'Dirty', 125, 6745, 1, 44, 100, 453454, 21.45, 'All product is bad', TRUE, 'Cleaning Required', 'Training Issue', 'Ask for help', TRUE, TRUE, 'Basics', 'https://upload.wikimedia.org/wikipedia/commons/1/18/SSF_Costco_bakery_pastry_packaging_line.JPG', 13 ),
+    ('Packaging', 'Shift2', 1851, 2, 'Dirty', 125, 6745, 1, 44, 100, 453454, 21.45, 'All product is contaminated', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for Maintenance', FALSE, TRUE, 'None', 'https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/5/3/7/6/916735-1-eng-GB/Agilent-Biologics-growth-presents-biggest-consumables-opportunity.jpg', 13 ),
+    ('Mixer', 'Shift1', 1852, 2, 'Dirty', 125, 6745, 1, 44, 100, 453454, 21.45, 'All product is over roasted', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for help', TRUE, TRUE, 'None', 'https://www.agro24.gr/sites/default/files/field/image/food_manuf.jpg', 13 ),
+    ('Dryer', 'Shift3', 1853, 2, 'Clean', 125, 6745, 1, 44, 100, 453454, 21.45, 'All product is over weight', FALSE, 'Cleaning Required', 'Training Issue', 'Ask for help', TRUE, TRUE, 'Basics', 'https://www.packagingstrategies.com/ext/resources/2014-Postings/Supplier-Products-2/lach-Multi-Flex-XL.jpg', 13 ),
+    ('Mixer', 'Shift1', 1854, 2, 'Clean', 125, 6745, 1, 44, 100, 453454, 21.45, 'All product is spilled', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for help', TRUE, TRUE, 'None', 'https://upload.wikimedia.org/wikipedia/commons/0/06/Graaff_Fruit-Ceres_packing.jpg', 13 ),
+    ('Dryer', 'Shift3', 1855, 2, 'Clean', 125, 6745, 1, 44, 100, 453454, 21.45, 'All product is wet', TRUE, 'Maintenance Required', 'Maintenance Issue', 'Ask for help', FALSE, FALSE, 'None', 'https://4.imimg.com/data4/KB/LC/MY-198876/apple-juice-processing-machinery-500x500.jpg', 13 )
 
 ALTER TABLE forms_pp
 ADD userid INT;
