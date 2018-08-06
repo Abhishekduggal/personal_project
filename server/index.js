@@ -18,6 +18,13 @@ const {
   deleteForm,
   updateField
 } = require("./controllers/formCtrl");
+
+const {
+  readSpecs,
+  createProduct,
+  createSpec
+} = require("./controllers/specificationsCtrl");
+
 const { emailForm } = require("./controllers/emailCtrl");
 const { smsMessage } = require("./controllers/smsCtrl");
 
@@ -89,6 +96,13 @@ app.put("/api/form/:formid", update);
 app.delete("/api/form/:formid", deleteForm);
 
 app.patch("/api/form/field/:id", updateField);
+
+// Product Specifications
+app.get("/api/products/specifications", readSpecs);
+
+app.post("/api/product/create", createProduct);
+
+app.post("/api/product/specification/create", createSpec);
 
 //Email & SMS functionality end Point
 app.post("/api/email", emailForm);

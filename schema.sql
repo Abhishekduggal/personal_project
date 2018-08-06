@@ -106,3 +106,33 @@ VALUES
 
 ALTER TABLE forms_pp
 ADD userid INT;
+
+CREATE TABLE specifications_pp
+(
+    specid SERIAL PRIMARY KEY,
+    productid INT REFERENCES products_pp(productid),
+    temp INT,
+    productspeed INT,
+    productdensity INT,
+    rejects INT,
+    waterpressure INT,
+    drylevel DECIMAL(16,2),
+    machinespeed INT
+)
+
+INSERT INTO specifications_pp
+    (productid,
+    temp,
+    productspeed,
+    productdensity,
+    rejects,
+    waterpressure,
+    drylevel,
+    machinespeed)
+VALUES
+    (1, 132, 34342, 55, 800, 345445, 20.55, 38556),
+    (2, 162, 32342, 52, 1000, 325445, 22.55, 38556),
+    (3, 102, 31342, 45, 100, 315445, 20.55, 38556),
+    (4, 182, 36342, 85, 600, 325445, 23.55, 38556),
+    (5, 142, 38342, 45, 800, 335445, 30.55, 42556),
+    (6, 162, 33342, 65, 800, 365445, 25.55, 48556)
