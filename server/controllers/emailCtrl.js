@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const emailForm = (req, res, next) => {
-  //   console.log(req.body);
+  console.log(req.body);
   const { issuecategory, trainingcategory, sendemail } = req.body;
   //   console.log(sendemail);
   const mailOptions = {

@@ -8,7 +8,8 @@ import ManagerDashboard from "./Components/Dashboards/Manager_Dashboard";
 import UserDashboard from "./Components/Dashboards/User_Dashboard";
 import Form from "./Components/Form/Form";
 import SpecificationsDashboard from "./Components/Dashboards/Specifications_Dashboard";
-import Product from "./Components/Product/Product";
+import Create_Product from "./Components/Product/Create_Product";
+import Create_Specification from "./Components/Product/Create_Specification";
 import Route_Not_Found from "./Route_Not_Found";
 import FormSms from "./Components/Form/FormSms";
 
@@ -24,7 +25,12 @@ export default (
       component={SpecificationsDashboard}
     />
     <Route path="/form" component={Form} />
-    <Route path="/product/create" component={Product} />
+    <Route exact path="/product/create" component={Create_Product} />
+    <Route
+      exact
+      path="/specification/create/:productid"
+      component={Create_Specification}
+    />
     <Route path="/sms" component={FormSms} />
     <Route path="*" component={Route_Not_Found} />
   </Switch>

@@ -85,12 +85,12 @@ class Form extends Component {
         imgurl
       })
       .then(res => {
-        this.props.reset();
         axios.post("/api/email", {
           issuecategory,
           trainingcategory,
-          sendemail: process.env.SEND_EMAIL
+          sendemail: process.env.REACT_APP_SEND_EMAIL
         });
+        this.props.reset();
       });
     // console.log(this.props.formInput);
   }
