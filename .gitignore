@@ -21,5 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # environment 
+Fire_Base.js
 .env
 notes.txt

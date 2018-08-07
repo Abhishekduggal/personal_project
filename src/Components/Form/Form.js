@@ -27,12 +27,37 @@ import {
   updateImgUrlInput,
   reset
 } from "../../ducks/formInputReducer";
+import firebase from "../../Fire_Base";
+import FileUploader from "react-firebase-file-uploader";
 
 class Form extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      image: null,
+      url: "",
+      isUploading: false,
+      progress: 0
+    };
+
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
+
+  handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
+  handleProgress = progress => this.setState({ progress });
+  handleUploadError = error => {
+    this.setState({ isUploading: false });
+    console.error(error);
+  };
+  handleUploadSuccess = filename => {
+    this.setState({ image: filename, progress: 100, isUploading: false });
+    firebase
+      .storage()
+      .ref("personalprojectimages")
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({ url: url }));
+  };
 
   handleSubmitForm() {
     let {
@@ -58,8 +83,8 @@ class Form extends Component {
       trainingcategory,
       imgurl
     } = this.props.formInput;
-    // console.log(shift);
-
+    // console.log(imgurl);
+    imgurl = this.state.url;
     axios
       .post("/api/form/create", {
         machinetype,
@@ -85,18 +110,22 @@ class Form extends Component {
         imgurl
       })
       .then(res => {
+        console.log(res);
         axios.post("/api/email", {
           issuecategory,
           trainingcategory,
           sendemail: process.env.REACT_APP_SEND_EMAIL
         });
         this.props.reset();
+        this.setState = {
+          image: null,
+          url: "",
+          isUploading: false,
+          progress: 0
+        };
       });
-    // console.log(this.props.formInput);
   }
   render() {
-    // console.log(this.props.formInput);
-
     let {
       machinetype,
       shift,
@@ -120,6 +149,7 @@ class Form extends Component {
       trainingcategory,
       imgurl
     } = this.props.formInput;
+    imgurl = this.state.url;
 
     return (
       <form
@@ -365,6 +395,21 @@ class Form extends Component {
             onChange={e => this.props.updateImgUrlInput(e.target.value)}
           />
         </label>
+        <br />
+        <label>Image Upload</label>
+        <br />
+        {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
+        {this.state.url && <img src={this.state.url} alt="" />}
+        <FileUploader
+          accept="image/*"
+          name="image"
+          randomizeFilename
+          storageRef={firebase.storage().ref("personalprojectimages")}
+          onUploadStart={this.handleUploadStart}
+          onUploadError={this.handleUploadError}
+          onUploadSuccess={this.handleUploadSuccess}
+          onProgress={this.handleProgress}
+        />
         <br />
         <button
           type="submit"

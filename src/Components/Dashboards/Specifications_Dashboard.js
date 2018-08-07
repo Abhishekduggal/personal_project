@@ -61,6 +61,7 @@ class Specifications_Dashboard extends Component {
       });
     return (
       <div>
+        <h1>Product Standard Specification</h1>
         <input
           onChange={e => this.handleInputChange(e.target.value)}
           type="text"
