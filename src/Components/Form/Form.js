@@ -39,8 +39,6 @@ class Form extends Component {
       isUploading: false,
       progress: 0
     };
-
-    this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -56,10 +54,12 @@ class Form extends Component {
       .ref("personalprojectimages")
       .child(filename)
       .getDownloadURL()
-      .then(url => this.setState({ url: url }));
+      .then(url => {
+        this.setState({ url: url });
+      });
   };
 
-  handleSubmitForm() {
+  handleSubmitForm = event => {
     let {
       machinetype,
       shift,
@@ -85,6 +85,8 @@ class Form extends Component {
     } = this.props.formInput;
     // console.log(imgurl);
     imgurl = this.state.url;
+    event.preventDefault();
+
     axios
       .post("/api/form/create", {
         machinetype,
@@ -110,7 +112,7 @@ class Form extends Component {
         imgurl
       })
       .then(res => {
-        console.log(res);
+        // console.log(res);
         axios.post("/api/email", {
           issuecategory,
           trainingcategory,
@@ -123,8 +125,9 @@ class Form extends Component {
           isUploading: false,
           progress: 0
         };
+        //redirect here
       });
-  }
+  };
   render() {
     let {
       machinetype,
@@ -154,7 +157,7 @@ class Form extends Component {
     return (
       <form
         className="container"
-        onSubmit={this.handleSubmitForm}
+        onSubmit={event => this.handleSubmitForm(event)}
         onReset={this.props.reset}
         style={FormStyles}
       >
@@ -428,6 +431,7 @@ class Form extends Component {
         >
           Reset
         </button>
+        {/* <input type="submit" value="SUBMIT" /> */}
       </form>
     );
   }

@@ -23,7 +23,7 @@ class Main_Dashboard extends Component {
       // console.log(form);
       return (
         <div key={i} className="display_form">
-          <FormDisplay form={form} deleteForm={deleteForm} />
+          <FormDisplay form={form} deleteForm={this.props.deleteForm} />
         </div>
       );
     });
