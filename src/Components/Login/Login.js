@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "reactstrap";
 
 import { connect } from "react-redux";
 import { getUser } from "../../ducks/userReducer";
@@ -12,10 +13,10 @@ class Login extends Component {
     return (
       <div>
         <a href={process.env.REACT_APP_LOGIN}>
-          <button>Sign In</button>
+          <Button>Sign In</Button>
         </a>
         <a href={process.env.REACT_APP_LOGOUT}>
-          <button>Sign Out</button>
+          <Button color="danger">Sign Out</Button>
         </a>
       </div>
     );
