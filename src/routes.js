@@ -12,6 +12,9 @@ import Create_Product from "./Components/Product/Create_Product";
 import Create_Specification from "./Components/Product/Create_Specification";
 import Route_Not_Found from "./Route_Not_Found";
 import FormSms from "./Components/Form/FormSms";
+import User_Facility_Chart from "./Components/Charts/Users_Facility_Chart";
+import Rejects_Cost_Chart from "./Components/Charts/Rejects_Cost_Chart";
+import Rejects_Chart from "./Components/Charts/Rejects_Chart";
 
 export default (
   <Switch>
@@ -32,6 +35,9 @@ export default (
       component={Create_Specification}
     />
     <Route path="/sms" component={FormSms} />
+    <Route exact path="/chart/facility" component={User_Facility_Chart} />
+    <Route exact path="/chart/rejects/cost" component={Rejects_Cost_Chart} />
+    <Route exact path="/chart/rejects" component={Rejects_Chart} />
     <Route path="*" component={Route_Not_Found} />
   </Switch>
 );

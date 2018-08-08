@@ -28,6 +28,11 @@ const {
 const { emailForm } = require("./controllers/emailCtrl");
 const { smsMessage } = require("./controllers/smsCtrl");
 
+const {
+  readRejects,
+  readHrUsersFacility
+} = require("./controllers/chartsCtrl");
+
 const app = express();
 
 app.use(express.static(__dirname + "/../build"));
@@ -108,6 +113,10 @@ app.post("/api/product/specification/create", createSpec);
 app.post("/api/email", emailForm);
 
 app.post("/api/sms", smsMessage);
+
+app.get("/api/charts/rejects", readRejects);
+
+app.get("/api/charts/users/facility", readHrUsersFacility);
 
 app.listen(port, () => {
   console.log(`I am up and listening on port: ${port}`);
