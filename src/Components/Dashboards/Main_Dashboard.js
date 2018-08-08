@@ -22,8 +22,6 @@ class Main_Dashboard extends Component {
     this.props.getForms();
   }
   render() {
-    // console.log(this.props);
-
     if (this.props.user.user.message) {
       return <Redirect to={"/login"} />;
     }

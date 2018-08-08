@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 const FormDisplay = props => {
   let { formid, imgurl, ...restofItems } = props.form;
@@ -12,14 +13,20 @@ const FormDisplay = props => {
           {[item[0]]}
         </div>
       ))}
-      <button
-        className="delete_button"
-        onClick={() => props.deleteForm(formid)}
-      >
-        Delete this Form
-      </button>
+
+      {props.user.user.isadmin && (
+        <button
+          className="delete_button"
+          onClick={() => props.deleteForm(formid)}
+        >
+          Delete this Form
+        </button>
+      )}
       <img src={imgurl} alt="" />
     </div>
   );
 };
-export default FormDisplay;
+
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(FormDisplay);

@@ -4,32 +4,37 @@ import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = props => {
   console.log(props);
-  let { component: Component, user, path, userComp } = props;
+
+  // if (!props.user.user.userid) {
+  //   return <Redirect to={"/login"} />;
+  // }
+
+  let { userid, role } = props.user.user;
+  // console.log(userid);
+  let { component: Component, path, managerComp: Manager } = props;
+
   return (
-    <h1> Private Route</h1>
-    // <Route
-    //   path={path}
-    //   render={props => {
-    //     // if (user.currentUser.userid) {
-    //     //   if (user.currentUser.role === "Manager") {
-    //     //     return <Component {...props} />;
-    //     //   } else {
-    //     //     return <userComp to="/dashboard" />;
-    //     //   }
-    //     // } else {
-    //       return <Redirect to="/login" />;
-    //     }
-    //   }}
-    // />
+    // <h1> Private Route</h1>
+    <Route
+      path={path}
+      render={props => {
+        if (userid) {
+          if (Manager && role === "Manager") {
+            return <Manager {...props} />;
+          } else {
+            return <Component to="/dashboard" />;
+          }
+        } else {
+          return <Redirect to="/login" />;
+        }
+      }}
+    />
   );
 };
 const mapStateToProps = state => state;
 
 // export default PrivateRoute;
-export default connect(
-  mapStateToProps,
-  null
-)(PrivateRoute);
+export default connect(mapStateToProps)(PrivateRoute);
 
 // <PrivateRoute path="/dashboard/manager" component={ManagerDashboard} userComp={MainDashboard}/>```
 
