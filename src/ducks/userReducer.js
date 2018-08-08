@@ -14,11 +14,17 @@ export function getUser() {
 }
 
 export default function reducer(state = initialState, action) {
+  // console.log(action);
   switch (action.type) {
     case `${GET_USER}_FULFILLED`:
       return {
         ...state,
         user: action.payload.data
+      };
+    case `${GET_USER}_REJECTED`:
+      return {
+        ...state,
+        user: action.payload.response.data
       };
     default:
       return state;

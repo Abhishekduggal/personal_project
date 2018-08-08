@@ -3,30 +3,34 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = props => {
+  console.log(props);
   let { component: Component, user, path, userComp } = props;
   return (
-    <Route
-      path={path}
-      render={props => {
-        if (user.currentUser.userid) {
-          if (user.currentUser.role === "Manager") {
-            return <Component {...props} />;
-          } else {
-            return <userComp to="/dashboard" />;
-          }
-        } else {
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
+    <h1> Private Route</h1>
+    // <Route
+    //   path={path}
+    //   render={props => {
+    //     // if (user.currentUser.userid) {
+    //     //   if (user.currentUser.role === "Manager") {
+    //     //     return <Component {...props} />;
+    //     //   } else {
+    //     //     return <userComp to="/dashboard" />;
+    //     //   }
+    //     // } else {
+    //       return <Redirect to="/login" />;
+    //     }
+    //   }}
+    // />
   );
 };
+const mapStateToProps = state => state;
 
-export default PrivateRoute;
+// export default PrivateRoute;
+export default connect(
+  mapStateToProps,
+  null
+)(PrivateRoute);
 
-// const mapStateToProps = state => state;
-
-// export default connect(mapStateToProps, null)(PrivateRoute)
 // <PrivateRoute path="/dashboard/manager" component={ManagerDashboard} userComp={MainDashboard}/>```
 
 // import React from 'react';

@@ -12,7 +12,7 @@ const getUser = (req, res) => {
   // console.log("ctrl line 12", req.user);
 
   if (!req.user) {
-    res.status(500).send({ message: "Please Sign in to Continue" });
+    res.status(401).send({ message: "Please Sign in to Continue" });
   } else {
     db.users.get_user_authid(req.user.authid).then(user => {
       res.status(200).send(user[0]);
@@ -21,7 +21,7 @@ const getUser = (req, res) => {
 };
 
 const login = passport.authenticate("auth0", {
-  successRedirect: "http://localhost:3000/#/dashboard/user",
+  successRedirect: "http://localhost:3000/#/dashboard",
   failureRedirect: "http://localhost:3000/#/login"
 });
 
