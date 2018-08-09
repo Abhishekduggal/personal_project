@@ -1,5 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {
+  Card,
+  Button,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardDeck,
+  CardSubtitle,
+  CardBody
+} from "reactstrap";
 
 class Specifications_Dashboard extends Component {
   constructor() {
@@ -46,17 +56,27 @@ class Specifications_Dashboard extends Component {
         } = spec;
 
         return (
-          <div key={i} className="specifications">
-            <h2> {`Product ID: ${productid} ${productdescription}`}</h2>
-            <h2>{`Cost USD$ ${productcost}`}</h2>
-            <h3>{`Temperature K: ${temp}`}</h3>
-            <h3>{`Product Speed: ${productspeed}`}</h3>
-            <h3>{`Product Density: ${productdensity}`}</h3>
-            <h3>{`Number of rejects: ${rejects} `}</h3>
-            <h3>{`Water Pressure: ${waterpressure} `}</h3>
-            <h3>{`Dry level: ${drylevel}`}</h3>
-            <h3>{`Machine Speed: ${machinespeed}`}</h3>
-          </div>
+          // <CardDeck>
+          <Card>
+            <CardBody>
+              {/* <div key={i} className="specifications"> */}
+              <CardTitle>${productdescription}</CardTitle>
+              <CardSubtitle>{`Product ID: ${productid}`}</CardSubtitle>
+              <CardSubtitle
+              >{`Product ID: ${productid} ${productdescription}`}</CardSubtitle>
+              <CardSubtitle>{`Cost USD$ ${productcost}`}</CardSubtitle>
+              <CardSubtitle>{`Temperature K: ${temp}`}</CardSubtitle>
+              <CardSubtitle>{`Product Speed: ${productspeed}`}</CardSubtitle>
+              <CardSubtitle
+              >{`Product Density: ${productdensity}`}</CardSubtitle>
+              <CardSubtitle>{`Number of rejects: ${rejects} `}</CardSubtitle>
+              <CardSubtitle>{`Water Pressure: ${waterpressure} `}</CardSubtitle>
+              <CardSubtitle>{`Dry level: ${drylevel}`}</CardSubtitle>
+              <CardSubtitle>{`Machine Speed: ${machinespeed}`}</CardSubtitle>
+              {/* </div> */}
+            </CardBody>
+          </Card>
+          // </CardDeck>
         );
       });
     return (

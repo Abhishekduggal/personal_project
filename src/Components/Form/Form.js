@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-// import FormStyles from "./FormStyles";
+
 import {
   updateMachineTypeInput,
   updateShiftInput,
@@ -35,8 +35,7 @@ import {
   Form as FormStrap,
   FormGroup,
   Label,
-  Input,
-  FormText
+  Input
 } from "reactstrap";
 
 class Form extends Component {
@@ -123,25 +122,21 @@ class Form extends Component {
       })
       .then(res => {
         // console.log(res);
-        axios.post("/api/email", {
-          issuecategory,
-          trainingcategory,
-          sendemail: process.env.REACT_APP_SEND_EMAIL
-        });
-        this.props.reset();
-        this.setState = {
-          image: null,
-          url: "",
-          isUploading: false,
-          progress: 0,
-          redirect: true
-        };
+        axios
+          .post("/api/email", {
+            issuecategory,
+            trainingcategory,
+            sendemail: process.env.REACT_APP_SEND_EMAIL
+          })
+          .then(() => this.props.reset())
+          .then(() => {
+            this.setState({
+              redirect: true
+            });
+          })
+          .catch(err => console.log(err));
 
-        //Page not being redirected
-
-        if (this.state.redirect) {
-          return <Redirect to={"/dashboard"} />;
-        }
+        // Alert
       });
   };
 
@@ -513,6 +508,7 @@ class Form extends Component {
             </Button>
           </Col>
         </FormGroup>
+        {this.state.redirect && <Redirect to="/dashboard" />}
       </FormStrap>
     );
   }
