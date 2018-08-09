@@ -2,7 +2,7 @@ const passport = require("passport");
 
 const logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect("http://localhost:3000");
+    res.redirect(process.env.REACT_APP_CLIENT);
   });
 };
 
@@ -21,8 +21,8 @@ const getUser = (req, res) => {
 };
 
 const login = passport.authenticate("auth0", {
-  successRedirect: "http://localhost:3000/#/dashboard",
-  failureRedirect: "http://localhost:3000/#/login"
+  successRedirect: process.env.REACT_APP_CLIENT + "/#/dashboard",
+  failureRedirect: process.env.REACT_APP_CLIENT + "/#/login"
 });
 
 module.exports = {
