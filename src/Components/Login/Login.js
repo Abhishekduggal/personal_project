@@ -6,7 +6,7 @@ class Login extends Component {
     return (
       <div>
         <a href={process.env.REACT_APP_LOGIN}>
-          <Button>Sign In</Button>
+          <Button color="primary">Sign In</Button>
         </a>
         <a href={process.env.REACT_APP_LOGOUT}>
           <Button color="danger">Sign Out</Button>
