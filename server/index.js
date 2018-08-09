@@ -35,6 +35,7 @@ const {
 
 const app = express();
 
+console.log(__dirname + "/../build");
 app.use(express.static(__dirname + "/../build"));
 
 massive(process.env.CONNECTION_STRING)
@@ -117,6 +118,10 @@ app.post("/api/sms", smsMessage);
 app.get("/api/charts/rejects", readRejects);
 
 app.get("/api/charts/users/facility", readHrUsersFacility);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 app.listen(port, () => {
   console.log(`I am up and listening on port: ${port}`);

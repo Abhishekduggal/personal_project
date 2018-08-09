@@ -60,7 +60,7 @@ class Specifications_Dashboard extends Component {
           <Card>
             <CardBody>
               {/* <div key={i} className="specifications"> */}
-              <CardTitle>${productdescription}</CardTitle>
+              <CardTitle>{productdescription}</CardTitle>
               <CardSubtitle>{`Product ID: ${productid}`}</CardSubtitle>
               <CardSubtitle
               >{`Product ID: ${productid} ${productdescription}`}</CardSubtitle>
