@@ -83,7 +83,7 @@ class Specifications_Dashboard extends Component {
           />
         </InputGroup>
 
-        <Table hover>
+        <Table responsive hover>
           <thead>
             <tr>
               <th>#ID</th>

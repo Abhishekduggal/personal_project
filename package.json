@@ -22,6 +22,7 @@
     "passport-auth0": "^1.0.0",
     "react": "^16.4.1",
     "react-chartjs-2": "^2.7.4",
+    "react-clock": "^2.3.0",
     "react-dom": "^16.4.1",
     "react-firebase-file-uploader": "^2.4.2",
     "react-redux": "^5.0.7",

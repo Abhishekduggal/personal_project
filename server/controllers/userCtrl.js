@@ -21,7 +21,7 @@ const getUser = (req, res) => {
 };
 
 const login = passport.authenticate("auth0", {
-  successRedirect: process.env.REACT_APP_CLIENT + "/#/dashboard",
+  successRedirect: process.env.REACT_APP_CLIENT + "/#/",
   failureRedirect: process.env.REACT_APP_CLIENT + "/#/login"
 });
 

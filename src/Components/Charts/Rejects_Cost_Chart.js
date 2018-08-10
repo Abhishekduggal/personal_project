@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import axios from "axios";
 import HeaderChart from "../Charts/Header_Chart";
 
@@ -50,7 +50,7 @@ class Rejects_Cost_Chart extends Component {
     return (
       <div className="Chart">
         <HeaderChart />
-        <Pie
+        <Bar
           data={data}
           options={{
             title: {
