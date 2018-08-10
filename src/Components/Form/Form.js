@@ -494,7 +494,9 @@ class Form extends Component {
             </Button>
           </Col>
         </FormGroup>
+
         <br />
+
         <FormGroup check row>
           <Col sm={{ size: 10, offset: 2 }}>
             <Button

@@ -2,7 +2,7 @@ const passport = require("passport");
 
 const logout = (req, res) => {
   req.session.destroy(() => {
-    res.redirect(process.env.REACT_APP_CLIENT);
+    res.redirect(process.env.REACT_APP_CLIENT + "/#/");
   });
 };
 

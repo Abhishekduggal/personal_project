@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import {
+  Col,
+  Button,
+  Form,
+  FormGroup,
+  Input,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon
+} from "reactstrap";
+
 const axios = require("axios");
 
 class Create_Product extends Component {
@@ -68,32 +79,65 @@ class Create_Product extends Component {
     }
 
     return (
-      <section>
-        <h3>Product Form</h3>
-        <input
-          className="Description_Input"
-          placeholder="Description of the Product"
-          value={productdescription}
-          onChange={e => this.updateDescriptionInput(e.target.value)}
-        />
+      <Form>
+        <h2>Product Development Form</h2>
 
-        <input
-          className="Product_Cost"
-          placeholder="Product Cost"
-          value={productcost}
-          onChange={e => this.updateCostInput(e.target.value)}
-        />
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">
+            <InputGroupText>Product</InputGroupText>
+          </InputGroupAddon>
+          <Input
+            className="Description_Input"
+            placeholder="Product Description"
+            value={productdescription}
+            onChange={e => this.updateDescriptionInput(e.target.value)}
+          />
+          <InputGroupAddon addonType="append">
+            <InputGroupText>Description</InputGroupText>
+          </InputGroupAddon>
+        </InputGroup>
 
-        <div className="Add_Product">
-          <button onClick={this.handleClickAddProduct}>Add Product</button>
-        </div>
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
+          <Input
+            className="Product_Cost"
+            placeholder="Product Cost"
+            value={productcost}
+            onChange={e => this.updateCostInput(e.target.value)}
+          />
+          <InputGroupAddon addonType="append">.00</InputGroupAddon>
+        </InputGroup>
 
-        <div className="Cancel_Product">
-          <button onClick={this.handleClickCancelProduct}>
-            Cancel Product
-          </button>
-        </div>
-      </section>
+        <br />
+
+        <FormGroup check row>
+          <Col sm={{ size: 10, offset: 2 }}>
+            <Button
+              color="success"
+              type="submit"
+              value="Submit"
+              onClick={this.handleClickAddProduct}
+            >
+              Next Step
+            </Button>
+          </Col>
+        </FormGroup>
+
+        <br />
+
+        <FormGroup check row>
+          <Col sm={{ size: 10, offset: 2 }}>
+            <Button
+              color="warning"
+              type="reset"
+              value="Reset"
+              onClick={this.handleClickCancelProduct}
+            >
+              Cancel
+            </Button>
+          </Col>
+        </FormGroup>
+      </Form>
     );
   }
 }

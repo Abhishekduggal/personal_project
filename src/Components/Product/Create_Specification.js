@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { Col, Button, Form, FormGroup, Input, FormText } from "reactstrap";
+
 const axios = require("axios");
 
 class Create_Specification extends Component {
@@ -146,70 +148,105 @@ class Create_Specification extends Component {
       return <Redirect to={`/products/specifications`} />;
     }
     return (
-      <section>
-        <h3>Product Specification</h3>
+      <Form>
+        <h2>Product Specification Form</h2>
 
-        <input
-          className="Product_Temp_Input"
-          placeholder="Product Temperature"
-          value={temp}
-          onChange={e => this.updateProductTempInput(e.target.value)}
-        />
+        <FormGroup>
+          <Col sm={12}>
+            <Input
+              className="Product_Temp_Input"
+              placeholder="Product Desired Temperature"
+              value={temp}
+              onChange={e => this.updateProductTempInput(e.target.value)}
+            />
+          </Col>
+        </FormGroup>
 
-        <input
-          className="Product_Speed_Input"
-          placeholder="Product Speed"
-          value={productspeed}
-          onChange={e => this.updateProductSpeedInput(e.target.value)}
-        />
+        <FormGroup>
+          <Col sm={12}>
+            <Input
+              className="Product_Speed_Input"
+              placeholder="Product Speed"
+              value={productspeed}
+              onChange={e => this.updateProductSpeedInput(e.target.value)}
+            />
+          </Col>
+        </FormGroup>
 
-        <input
-          className="Product_Density_Input"
-          placeholder="Product Density"
-          value={productdensity}
-          onChange={e => this.updateProductDensityInput(e.target.value)}
-        />
+        <FormGroup>
+          <Col sm={12}>
+            <Input
+              className="Product_Density_Input"
+              placeholder="Product Density"
+              value={productdensity}
+              onChange={e => this.updateProductDensityInput(e.target.value)}
+            />
+          </Col>
+        </FormGroup>
 
-        <input
-          className="Rejects_Input"
-          placeholder="Number of Rejects"
-          value={rejects}
-          onChange={e => this.updateRejectsInput(e.target.value)}
-        />
+        <FormGroup>
+          <Col sm={12}>
+            <Input
+              className="Rejects_Input"
+              placeholder="Number of Rejects"
+              value={rejects}
+              onChange={e => this.updateRejectsInput(e.target.value)}
+            />
+          </Col>
+        </FormGroup>
 
-        <input
-          className="WaterPressure_Input"
-          placeholder="Product Water Pressure"
-          value={waterpressure}
-          onChange={e => this.updateWaterPressureInput(e.target.value)}
-        />
+        <FormGroup>
+          <Col sm={12}>
+            <Input
+              className="WaterPressure_Input"
+              placeholder="Product Water Pressure"
+              value={waterpressure}
+              onChange={e => this.updateWaterPressureInput(e.target.value)}
+            />
+          </Col>
+        </FormGroup>
 
-        <input
-          className="Drylevel_Input"
-          placeholder="Product Dry Level"
-          value={drylevel}
-          onChange={e => this.updateDryLevelInput(e.target.value)}
-        />
+        <FormGroup>
+          <Col sm={12}>
+            <Input
+              className="Drylevel_Input"
+              placeholder="Product Dry Level"
+              value={drylevel}
+              onChange={e => this.updateDryLevelInput(e.target.value)}
+            />
+          </Col>
+        </FormGroup>
 
-        <input
-          className="Machine_Speed_Input"
-          placeholder="Product Machine Speed"
-          value={machinespeed}
-          onChange={e => this.updateMachineSpeedInput(e.target.value)}
-        />
+        <FormGroup>
+          <Col sm={12}>
+            <Input
+              className="Machine_Speed_Input"
+              placeholder="Product Machine Speed"
+              value={machinespeed}
+              onChange={e => this.updateMachineSpeedInput(e.target.value)}
+            />
+            <FormText color="muted">Product Development is complete</FormText>
+          </Col>
+        </FormGroup>
 
-        <div className="Add_Product">
-          <button onClick={this.handleClickAddSpecification}>
-            Add Specification
-          </button>
-        </div>
+        <FormGroup>
+          <Col sm={{ size: 10, offset: 2 }}>
+            <Button color="success" onClick={this.handleClickAddSpecification}>
+              Create Product
+            </Button>
+          </Col>
+        </FormGroup>
 
-        <div className="Cancel_Product">
-          <button onClick={this.handleClickCancelProduct}>
-            Cancel Specification
-          </button>
-        </div>
-      </section>
+        <br />
+
+        <FormGroup>
+          <Col sm={{ size: 10, offset: 2 }}>
+            <Button color="warning" onClick={this.handleClickCancelProduct}>
+              Cancel Specification
+            </Button>
+          </Col>
+        </FormGroup>
+      </Form>
     );
   }
 }

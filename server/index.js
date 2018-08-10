@@ -35,7 +35,7 @@ const {
 
 const app = express();
 
-console.log(__dirname + "/../build");
+// console.log(__dirname + "/../build");
 app.use(express.static(__dirname + "/../build"));
 
 massive(process.env.CONNECTION_STRING)

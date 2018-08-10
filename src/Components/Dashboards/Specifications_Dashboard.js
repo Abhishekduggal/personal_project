@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {
-  Card,
-  Button,
-  CardImg,
-  CardTitle,
-  CardText,
-  CardDeck,
-  CardSubtitle,
-  CardBody
+  Table,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon,
+  Input
 } from "reactstrap";
 
 class Specifications_Dashboard extends Component {
@@ -56,39 +53,53 @@ class Specifications_Dashboard extends Component {
         } = spec;
 
         return (
-          // <CardDeck>
-          <Card>
-            <CardBody>
-              {/* <div key={i} className="specifications"> */}
-              <CardTitle>{productdescription}</CardTitle>
-              <CardSubtitle>{`Product ID: ${productid}`}</CardSubtitle>
-              <CardSubtitle
-              >{`Product ID: ${productid} ${productdescription}`}</CardSubtitle>
-              <CardSubtitle>{`Cost USD$ ${productcost}`}</CardSubtitle>
-              <CardSubtitle>{`Temperature K: ${temp}`}</CardSubtitle>
-              <CardSubtitle>{`Product Speed: ${productspeed}`}</CardSubtitle>
-              <CardSubtitle
-              >{`Product Density: ${productdensity}`}</CardSubtitle>
-              <CardSubtitle>{`Number of rejects: ${rejects} `}</CardSubtitle>
-              <CardSubtitle>{`Water Pressure: ${waterpressure} `}</CardSubtitle>
-              <CardSubtitle>{`Dry level: ${drylevel}`}</CardSubtitle>
-              <CardSubtitle>{`Machine Speed: ${machinespeed}`}</CardSubtitle>
-              {/* </div> */}
-            </CardBody>
-          </Card>
-          // </CardDeck>
+          <tr key={i}>
+            <th scope="row">{productid}</th>
+            <td>{productdescription}</td>
+            <td>{productcost}</td>
+            <td>{temp}</td>
+            <td>{productspeed}</td>
+            <td>{productdensity}</td>
+            <td>{rejects}</td>
+            <td>{waterpressure}</td>
+            <td>{drylevel}</td>
+            <td>{machinespeed}</td>
+          </tr>
         );
       });
     return (
       <div>
-        <h1>Product Standard Specification</h1>
-        <input
-          onChange={e => this.handleInputChange(e.target.value)}
-          type="text"
-          value={this.state.search || ""}
-          placeholder="Search a Product"
-        />
-        {specifications}
+        <h1>Product Standard Specifications</h1>
+
+        <InputGroup>
+          <InputGroupAddon addonType="append">
+            <InputGroupText>Search</InputGroupText>
+          </InputGroupAddon>
+          <Input
+            onChange={e => this.handleInputChange(e.target.value)}
+            type="text"
+            value={this.state.search || ""}
+            placeholder="Description"
+          />
+        </InputGroup>
+
+        <Table hover>
+          <thead>
+            <tr>
+              <th>#ID</th>
+              <th>Description</th>
+              <th>Cost $</th>
+              <th>Temperature</th>
+              <th>Speed</th>
+              <th>Density</th>
+              <th>Rejects</th>
+              <th>Water</th>
+              <th>DryLevel</th>
+              <th>Speed</th>
+            </tr>
+          </thead>
+          <tbody>{specifications}</tbody>
+        </Table>
       </div>
     );
   }
