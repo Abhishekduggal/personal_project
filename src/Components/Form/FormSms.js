@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Button, Alert, FormGroup, Input } from "reactstrap";
 
 class FormSms extends Component {
   constructor() {
@@ -24,9 +25,13 @@ class FormSms extends Component {
   render() {
     return (
       <div>
-        <label>
-          Send an Urgent Message to request help:
-          <select
+        <Alert color="info">Send an urgent message!</Alert>
+
+        <FormGroup>
+          <Input
+            type="select"
+            name="select"
+            id="exampleSelect"
             className="Input"
             value={this.state.message || ""}
             onChange={e => this.updateSendSms(e.target.value)}
@@ -38,11 +43,14 @@ class FormSms extends Component {
             <option value="Packaging line down">Packaging Line down</option>
             <option value="Emergency Situation">Emergency</option>
             <option value="Operator Missing">Operator Missing</option>
-          </select>
-          <button onClick={() => this.handleSendSms(this.state.message)}>
-            Click to send Message
-          </button>
-        </label>
+          </Input>
+        </FormGroup>
+        <Button
+          color="success"
+          onClick={() => this.handleSendSms(this.state.message)}
+        >
+          Click to send Message
+        </Button>
       </div>
     );
   }
