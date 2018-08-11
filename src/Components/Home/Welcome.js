@@ -20,9 +20,10 @@ class Welcome extends Component {
     return (
       <div>
         <Jumbotron>
-          <h1 className="display-3">Hello, world!</h1>
+          <h1 className="display-3">Hello world!</h1>
+          <h1 className="display-5">Welcome to QualAssure</h1>
           <p className="lead">
-            This is a business site designed to track Quality Assurance forms.
+            This is a business site designed to track Quality Assurance Forms.
             There is a Management Dashboard that has chart metrics to show
             perfomance at the shop floor.
           </p>
