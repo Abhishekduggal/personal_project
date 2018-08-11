@@ -9,22 +9,6 @@ class User_Dashboard extends Component {
   state = { text: "" };
   componentDidMount() {
     this.props.getForms();
-    // Example to review later for Admin / Manager user
-    // constructor() {
-    //   super();
-    //   this.state = {
-    //     isadmin: false
-    //   };
-    // }
-    // axios.get("/api/get-user").then(response => {
-    //   if (response.data.isadmin) {
-    //     alert("Hello admin");
-    //     this.setState({ isadmin: true });
-    //     this.props.getForms();
-    //   } else {
-    //     alert("You are not an admin... i will redirect you...");
-    //   }
-    // });
   }
   handleChange = event => {
     this.setState({ text: event.target.value });
