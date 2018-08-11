@@ -33,7 +33,7 @@ class NavBar extends Component {
       <div>
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/" className="mr-auto">
-            Quality Assurance
+            QualAssure
           </NavbarBrand>
 
           <NavbarToggler onClick={this.toggle} />

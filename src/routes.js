@@ -16,11 +16,13 @@ import User_Facility_Chart from "./Components/Charts/Users_Facility_Chart";
 import Rejects_Cost_Chart from "./Components/Charts/Rejects_Cost_Chart";
 import Rejects_Chart from "./Components/Charts/Rejects_Chart";
 import PrivateRoute from "./PrivateRoute";
+import Privacy from "./Components/Footer/Privacy";
 
 export default (
   <Switch>
     <Route exact path="/" component={Home} />
     <Route path="/login" component={Login} />
+    <Route exact path="/privacy" component={Privacy} />
 
     <Route exact path="/dashboard" component={MainDashboard} />
     <PrivateRoute exact path="/form" component={Form} />

@@ -22,7 +22,7 @@ class Welcome extends Component {
         <Jumbotron>
           <h1 className="display-3">Hello, world!</h1>
           <p className="lead">
-            This is a business site designed to track Quality Assuance forms.
+            This is a business site designed to track Quality Assurance forms.
             There is a Management Dashboard that has chart metrics to show
             perfomance at the shop floor.
           </p>
