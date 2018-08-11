@@ -11,14 +11,14 @@ const Header_Chart = () => {
           Reject Analysis
         </Button>
       </Link>
-      <Link to={`/chart/rejects/cost`}>
-        <Button outline color="info" className="Next_Button">
-          Reject Cost Analysis
-        </Button>
-      </Link>
       <Link to={`/chart/facility`}>
         <Button outline color="info" className="Next_Button">
           Facility Analysis
+        </Button>
+      </Link>
+      <Link to={`/chart/rejects/cost`}>
+        <Button outline color="info" className="Next_Button">
+          Reject Cost Analysis
         </Button>
       </Link>
     </div>
