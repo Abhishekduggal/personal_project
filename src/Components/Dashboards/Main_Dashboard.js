@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 
 import { getForms, deleteForm } from "../../ducks/formReducer";
 import { getUser } from "../../ducks/userReducer";
-import FormDisplay from "../Cards/FormDisplay";
+import FormDisplayCard from "../Cards/FormDisplayCard";
 
 class Main_Dashboard extends Component {
   constructor() {
@@ -28,10 +28,9 @@ class Main_Dashboard extends Component {
 
     let { forms } = this.props.forms;
     let displayForms = forms.map((form, i) => {
-      // console.log(form);
       return (
         <div key={i} className="display_form">
-          <FormDisplay form={form} deleteForm={this.props.deleteForm} />
+          <FormDisplayCard form={form} deleteForm={this.props.deleteForm} />
         </div>
       );
     });

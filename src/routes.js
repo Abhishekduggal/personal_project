@@ -17,6 +17,7 @@ import Rejects_Cost_Chart from "./Components/Charts/Rejects_Cost_Chart";
 import Rejects_Chart from "./Components/Charts/Rejects_Chart";
 import PrivateRoute from "./PrivateRoute";
 import Privacy from "./Components/Footer/Privacy";
+import FormDisplayTable from "./Components/Cards/FormDisplayTable";
 
 export default (
   <Switch>
@@ -25,6 +26,8 @@ export default (
     <Route exact path="/privacy" component={Privacy} />
 
     <Route exact path="/dashboard" component={MainDashboard} />
+
+    <PrivateRoute exact path="/dashboard/table" component={FormDisplayTable} />
     <PrivateRoute exact path="/form" component={Form} />
     <PrivateRoute
       path="/products/specifications"
