@@ -83,6 +83,14 @@ class NavBar extends Component {
                       </Link>
                     </NavItem>
                   </DropdownItem>
+
+                  <DropdownItem>
+                    <NavItem>
+                      <Link to="/training/videos" action="replace">
+                        Training Videos
+                      </Link>
+                    </NavItem>
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
 

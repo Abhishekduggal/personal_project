@@ -18,6 +18,7 @@ import Rejects_Chart from "./Components/Charts/Rejects_Chart";
 import PrivateRoute from "./PrivateRoute";
 import Privacy from "./Components/Footer/Privacy";
 import FormDisplayTable from "./Components/Cards/FormDisplayTable";
+import VideoList from "./Components/Training/Video_List";
 
 export default (
   <Switch>
@@ -34,6 +35,7 @@ export default (
       component={SpecificationsDashboard}
     />
     <PrivateRoute path="/sms" component={FormSms} />
+    <PrivateRoute path="/training/videos" component={VideoList} />
 
     <PrivateRoute
       path="/form/edit"
