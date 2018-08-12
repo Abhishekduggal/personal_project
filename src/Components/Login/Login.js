@@ -1,20 +1,31 @@
 import React, { Component } from "react";
-import { Button } from "reactstrap";
-import logo from "./duggal_logo.png";
+import { Alert } from "reactstrap";
 
 class Login extends Component {
   render() {
     return (
       <div>
-        <img src={logo} alt="personal_logo" />
+        <Alert color="primary">
+          Welcome to QualAssure{" "}
+          <a href={process.env.REACT_APP_LOGIN} className="alert-link">
+            Sign in
+          </a>
+          . Give it a click if you like!
+        </Alert>
         <br />
         <br />
-        <a href={process.env.REACT_APP_LOGIN}>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        {/* <a href={process.env.REACT_APP_LOGIN}>
           <Button color="primary">Sign In</Button>
-        </a>
-        <a href={process.env.REACT_APP_LOGOUT}>
+        </a> */}
+        {/* <a href={process.env.REACT_APP_LOGOUT}>
           <Button color="danger">Sign Out</Button>
-        </a>
+        </a> */}
       </div>
     );
   }
