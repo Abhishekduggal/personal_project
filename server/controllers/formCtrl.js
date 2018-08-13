@@ -34,7 +34,7 @@ const create = (req, res, next) => {
   } = req.body;
 
   const db = req.app.get("db");
-  console.log(req.body);
+  // console.log(req.body);
   db.forms
     .create_form([
       machinetype,
@@ -96,7 +96,7 @@ const update = (req, res, next) => {
   } = req.body;
 
   const db = req.app.get("db");
-  console.log(req.body);
+  // console.log(req.body);
   db.forms
     .update_form([
       formid,
@@ -134,7 +134,7 @@ const deleteForm = (req, res, next) => {
   let { formid } = req.params;
 
   const db = req.app.get("db");
-  console.log(formid);
+  // console.log(formid);
 
   db.forms
     .delete_form(formid)

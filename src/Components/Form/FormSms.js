@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 import { Button, Alert, FormGroup, Input } from "reactstrap";
+import Swal from "sweetalert2";
 
 class FormSms extends Component {
   constructor() {
     super();
     this.state = {
       isClicked: false,
-      message: ""
+      message: "",
+      redirect: false
     };
     this.updateSendSms = this.updateSendSms.bind(this);
     this.handleSendSms = this.handleSendSms.bind(this);
@@ -17,12 +20,20 @@ class FormSms extends Component {
   }
 
   handleSendSms(message) {
-    axios.post("/api/sms", { message }).then(res => {
-      // window.alert("SMS Message Sent");
-    });
+    axios
+      .post("/api/sms", { message })
+      .then(() => {
+        Swal("Message Sent!", "Manager has been notified!", "success");
+      })
+      .then(() => {
+        this.setState({ redirect: true });
+      });
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={"/dashboard"} />;
+    }
     return (
       <div>
         <Alert color="info">Send an urgent message!</Alert>

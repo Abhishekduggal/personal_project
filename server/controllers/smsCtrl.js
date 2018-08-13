@@ -11,7 +11,8 @@ const smsMessage = (req, res, next) => {
       to: process.env.TWILIO_TO_NUMBER,
       from: process.env.TWILIO_FROM_NUMBER
     })
-    .then(message => console.log(message.body));
+    .then(() => res.status(200).send("All Good"))
+    .catch(() => sendStatus(500));
 };
 
 module.exports = {

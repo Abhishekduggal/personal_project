@@ -37,6 +37,7 @@ import {
   Label,
   Input
 } from "reactstrap";
+import Swal from "sweetalert2";
 
 class Form extends Component {
   constructor(props) {
@@ -128,16 +129,18 @@ class Form extends Component {
             trainingcategory,
             sendemail: process.env.REACT_APP_SEND_EMAIL
           })
-          .then(() => this.props.reset())
-          .then(() => {
-            this.setState({
-              redirect: true
-            });
-          })
-          .catch(err => console.log(err));
-
-        // Alert
-      });
+          .then(() => this.props.reset());
+      })
+      .then(() => {
+        Swal("Form Submitted!", "Thank you!", "success");
+      })
+      .then(() => {
+        this.setState({
+          redirect: true
+        });
+      })
+      .catch(err => console.log(err));
+    // Alert
   };
 
   render() {
