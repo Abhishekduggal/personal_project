@@ -33,6 +33,7 @@ const {
   readHrUsersFacility
 } = require("./controllers/chartsCtrl");
 
+const { youtubesearch } = require("./controllers/youtubeCtrl");
 const app = express();
 
 // console.log(__dirname + "/../build");
@@ -118,6 +119,8 @@ app.post("/api/sms", smsMessage);
 app.get("/api/charts/rejects", readRejects);
 
 app.get("/api/charts/users/facility", readHrUsersFacility);
+
+app.get("/api/youtube/search", youtubesearch);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../build/index.html"));

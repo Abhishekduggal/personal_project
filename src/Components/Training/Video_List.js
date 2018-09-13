@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Alert } from "reactstrap";
 
-const { REACT_APP_YOUTUBE_KEY } = process.env;
+// const { REACT_APP_YOUTUBE_KEY } = process.env;
 
-const baseUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=qualitytraining&type=video&key=${REACT_APP_YOUTUBE_KEY}`;
+// const baseUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=qualitytraining&type=video&key=${REACT_APP_YOUTUBE_KEY}`;
 
 class Video_List extends Component {
   constructor() {
@@ -16,9 +16,10 @@ class Video_List extends Component {
   }
 
   componentDidMount() {
-    axios.get(baseUrl).then(res => {
+    axios.get("/api/youtube/search").then(res => {
+      // console.log(res);
       this.setState({
-        data: res.data.items
+        data: res.data
       });
     });
   }
